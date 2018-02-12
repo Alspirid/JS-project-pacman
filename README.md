@@ -30,14 +30,22 @@ In addition to the webpack entry file, there will be three scripts involved into
 - packman.js - will handle logic of moving elements over the canvas
 - audio.js - this script will handle the audio logic and the creation of AudioEvents based on the input parameters outlined above. The programming paradigm will be an audio graph consisting of buffers and processing nodes, all connected into a master bus, and referencing a global AudioContext with its own timeline.
 
-The source of sounds for the packmanball game is http://www.classicgaming.cc/classics/pac-man/sounds
 
-#### The following sounds might be used in the game:
+
+### Sounds and Artwork
+
+The Artworks and Sounds for the packmanball game is taken from the free resource: http://www.classicgaming.cc/classics/pac-man/sounds
+
+#### The following sounds will be used in the game:
 - packman_beginning.wav
 - packman_death.wav
 - packman_eatfruit.wav
 - packman_eatghost.wav
 - packman_intermission.wav
+- packman_chomp.wav
+
+### The main artwork will be used in the game:
+- pac.png
 
 ### Implementation timeline
 - [x] Finish canvas and momentum collision on the packman project
