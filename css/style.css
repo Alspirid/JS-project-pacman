@@ -1,0 +1,10 @@
+.row {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+}
+canvas {
+  border: 1px solid #000;
+  margin: auto;
+}
