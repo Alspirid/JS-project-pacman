@@ -16,7 +16,7 @@ The enemies will work the same way as in the original packman trying to catch th
 The app will consist of a single screen with the canvas, playback controls, volume control, score and level.
 On the top of the canvas there will be the Play Score and the Game level. The canvas includes the ball and two types of characters: the packman and the ghosts. Playback control below the canvas will include play, pause and restart buttons.
 
-![](https://github.com/Alspirid/JS-project-pacman/blob/master/assets/wireframe.png)
+![](https://github.com/Alspirid/JS-project-pacman/blob/master/assets/wireframe-packmanball.png)
 
 ### Architecture and Technologies
 This project will be implemented with the following technologies:
