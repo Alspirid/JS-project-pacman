@@ -69,8 +69,6 @@ const playSound = (sound) =>{
         break;
     }
   }
-  
-
 };
 
 
@@ -99,7 +97,34 @@ const volumeClick = () =>{
 };
 
 
+const clickPlay = () => {
+  if (isGameOver){
+    gscore = 0;
+    score = 0;
+    isGameOver = false;
+    isStart = true;
+  }
+    if (isPaused){
+      isPaused = false; 
+      playGame();
+    }
+};
 
+const clickPause = () => {
+  if (!isPaused){
+    isPaused = true; 
+    playGame();
+  }
+};
+
+
+const resetGame = () => {
+  gscore = 0;
+  score = 0;
+  isGameOver = false;
+  isStart = true;
+  checkReady();
+};
 
 
 const togglePause = (key) => {
