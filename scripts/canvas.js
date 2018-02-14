@@ -1,6 +1,8 @@
 
 let isPaused = true;
 let isStart = true;
+let isGameOver = false;
+let isVolume = true;
 
 const packman = {
   x: 50,
@@ -62,11 +64,32 @@ document.addEventListener('keyup', (e)=>{
   delete keyClick[e.keyCode];
 },false);
 
+const volumeClick = () =>{
+  const volume = document.getElementById('volume');
+  if (isVolume) {
+    volume.classList.remove("ion-android-volume-up");
+    volume.classList.add("ion-android-volume-off");
+  } else {
+    volume.classList.remove("ion-android-volume-off");
+    volume.classList.add("ion-android-volume-up");
+  }
+  isVolume = !isVolume;
+};
+
+
+
+
 
 const togglePause = (key) => {
   if (key === 32) {
-    isPaused = ! isPaused;
-    playGame();
+    if (isGameOver){
+      gscore = 0;
+      score = 0;
+      isGameOver = false;
+      isStart = true;
+    }
+      isPaused = ! isPaused;
+      playGame();
   }
 };
 
@@ -293,14 +316,27 @@ const render = () => {
     32,
     32
   );
-context.fillStyle = '#FFFF00';
-  context.fillText('Pacman: ' + score + ' Ghost: ' + gscore, 2,18 );
+context.fillStyle = '#FFF';
+  context.fillText('PACMAN: ' + score + ' GHOST: ' + gscore, 2,18 );
   if (isPaused && !isStart) {
     context.fillText('PAUSED', 400,20 );
   }
   if (isStart) {
     context.fillText('PLEASE PRESS SPACE TO START', 130,200 );
     isStart = !isStart;
+  }
+  if (score === 11) {
+    context.fillStyle = 'red';
+    context.font = '40px Verdana';
+    context.fillText('YOU WON', 200,200 );
+    isPaused = true;
+    isGameOver = true;
+  } else if (gscore === 11) {
+    context.fillStyle = 'red';
+    context.font = '40px Verdana';
+    context.fillText('GAME OVER', 190,200 );
+    isPaused = true;
+    isGameOver = true;
   }
 
 };
