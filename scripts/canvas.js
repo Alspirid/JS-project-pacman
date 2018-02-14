@@ -52,6 +52,28 @@ const soundEatGhost = new Audio('./assets/pacman_eatghost.wav');
 const soundDeath = new Audio('./assets/pacman_death.wav');
 const soundBeginning = new Audio('./assets/pacman_beginning.wav');
 
+const playSound = (sound) =>{
+  if (isVolume) {
+    switch (sound) {
+      case 'chomp':
+        soundChomp.play();
+        break;
+      case 'eatfruit':
+        soundEatFruit.play();
+        break;
+      case 'eatghost':
+        soundEatGhost.play();
+        break;
+      case 'death':
+        soundDeath.play();
+        break;
+    }
+  }
+  
+
+};
+
+
 const keyClick = {};
 
 document.addEventListener('keydown', (e)=>{
@@ -93,13 +115,6 @@ const togglePause = (key) => {
   }
 };
 
-// const playSound = (key) => {
-//   switch (key) {
-//     case 37,38,39,40:
-//       soundChomp.play();
-//       break;
-//   }
-// };
 
 const move = (keyObject) => {
 
@@ -229,10 +244,12 @@ const render = () => {
         console.log('hit a ghost');
         if (powerball.ghostEat) {
           score++;
-          soundEatGhost.play();
+          // soundEatGhost.play();
+          playSound('eatghost');
         } else {
           gscore++;
-          soundDeath.play();
+          // soundDeath.play();
+          playSound('death');
         }
         packman.x = 10;
         packman.x = 100;
@@ -248,8 +265,8 @@ const render = () => {
       packman.y <= (powerball.y) && 
       powerball.y <= (packman.y + 32  )
     ) {
-        soundEatFruit.play();
-        console.log('hit');
+        // soundEatFruit.play();
+        playSound('eatfruit');
         score++;
         powerball.visible = false;
         powerball.pcountdown = 500;
