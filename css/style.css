@@ -2,7 +2,7 @@ body {
   background-color: #000;
 }
 
-.row {
+.game {
   width: 650px;
   height: 450px;
   margin-top: 200px;
@@ -24,7 +24,7 @@ canvas {
   /* border: 5px solid navy; */
 }
 
-.row h1 {
+.game h1 {
   color: yellow;
   font-size: 25px;
   font-weight: 600;
@@ -36,7 +36,7 @@ canvas {
   margin-bottom: 15px;
 }
 
-i {
+.volume {
   position: absolute;
   top: 5px;
   right: 10px;
@@ -44,4 +44,33 @@ i {
   font-size: 35px;
   cursor: pointer;
   padding: 4px;
+}
+
+.controls {
+  /* border: 1px solid blue; */
+  border-radius: 5px;
+  padding: 15px;
+  width: 250px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-around;
+  /* flex-direction: column; */
+  align-items: center;
+}
+
+.play, .pause {
+  color: #dcdde1;
+  font-size: 75px;
+  cursor: pointer;
+}
+.reset {
+  color: #dcdde1;
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.play:hover, .pause:hover, .reset:hover {
+  color: yellow;
 }
