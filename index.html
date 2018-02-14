@@ -8,11 +8,21 @@
     <
   </head>
   <body>
-    <div id='root' class='row'>
-      <h1 id='title'>Packman ball</h1>
-      <i id='volume' onclick='volumeClick()' class="icon ion-android-volume-up"></i>
+    <div class="row">
+      <div id='root' class='game'>
+        <h1 id='title'>Packman ball</h1>
+        <i id='volume' onclick='volumeClick()' class="volume icon ion-android-volume-up"></i>
+      </div>
+      <div class='controls'>
+        <i id='play' onclick='clickPlay()' class='play icon ion-ios-play-outline'></i>
+        <i id='pause' onClick='clickPause()' class='pause icon ion-ios-pause-outline'></i>
+        <i id='reset' onClick='resetGame()' class='reset icon ion-ios-refresh'></i>
+      </div>
     </div>
-      
+  
+
+    
+
       <script src="./scripts/canvas.js"></script>
   </body>
 </html>
