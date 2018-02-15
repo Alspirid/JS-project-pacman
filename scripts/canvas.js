@@ -266,7 +266,6 @@ const render = () => {
       packman.y <= (enemy.y + 26) && 
       enemy.y <= (packman.y + 32)
     ) {
-        console.log('hit a ghost');
         if (powerball.ghostEat) {
           score++;
           // soundEatGhost.play();
@@ -380,5 +379,4 @@ context.fillStyle = '#FFF';
     isPaused = true;
     isGameOver = true;
   }
-
 };
