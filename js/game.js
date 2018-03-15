@@ -38,16 +38,20 @@ class Game {
    move(keyObject){
 
     if (37 in keyObject) {
-      Pacman.X -= Pacman.speed; Pacman.imgPositionY = 64;
+      Pacman.X -= Pacman.speed; 
+      Pacman.imgPositionY = 64;
     }
     if (38 in keyObject) {
-      Pacman.Y -= Pacman.speed; Pacman.imgPositionY = 96;
+      Pacman.Y -= Pacman.speed; 
+      Pacman.imgPositionY = 96;
     }
     if (39 in keyObject) {
-      Pacman.X += Pacman.speed; Pacman.imgPositionY = 0;
+      Pacman.X += Pacman.speed; 
+      Pacman.imgPositionY = 0;
     }
     if (40 in keyObject) {
-      Pacman.Y += Pacman.speed; Pacman.imgPositionY = 32;
+      Pacman.Y += Pacman.speed; 
+      Pacman.imgPositionY = 32;
     }
     if (Pacman.X >= (this.canvas.width-32)) {
       Pacman.X = 0;
