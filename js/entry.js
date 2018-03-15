@@ -1,9 +1,10 @@
 import Game from './game.js';
 import { playSound } from './sounds.js';
 
-const game = new Game();
+  let game;
 
 document.addEventListener('DOMContentLoaded', () =>{
+  game = new Game();
   document.getElementById('root').appendChild(game.canvas);
 });
 
