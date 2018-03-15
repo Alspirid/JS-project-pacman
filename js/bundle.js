@@ -121,9 +121,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-const game = new __WEBPACK_IMPORTED_MODULE_0__game_js__["a" /* default */]();
+  let game;
 
 document.addEventListener('DOMContentLoaded', () =>{
+  game = new __WEBPACK_IMPORTED_MODULE_0__game_js__["a" /* default */]();
   document.getElementById('root').appendChild(game.canvas);
 });
 
@@ -211,6 +212,10 @@ class Game {
     this.createCanvas();
     this.canvas.height = 400;
     this.canvas.width = 600;
+    this.scoreElement = document.getElementById('score');
+    this.scoreText = 'PACMAN: ' + this.score + 
+    '  &nbsp; ' + '    GHOST: ' + this.gscore;
+    this.pauseMessage = document.getElementById('pause-message');
     }
   
   
@@ -221,7 +226,7 @@ class Game {
     this.context = this.canvas.getContext("2d");
     this.context.fillStyle = "black";
     this.context.fillRect(0,0,this.canvas.width, this.canvas.height);
-    this.context.font = '20px Verdana';
+    this.context.font = '20px Limelight';
     this.context.fillStyle = '#fff';
     this.context.fillText('Pacman: ' + this.score + 
     ' Ghost: ' + this.gscore, 2,18 );
@@ -230,16 +235,20 @@ class Game {
    move(keyObject){
 
     if (37 in keyObject) {
-      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].X -= __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].speed; __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].imgPositionY = 64;
+      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].X -= __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].speed; 
+      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].imgPositionY = 64;
     }
     if (38 in keyObject) {
-      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].Y -= __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].speed; __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].imgPositionY = 96;
+      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].Y -= __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].speed; 
+      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].imgPositionY = 96;
     }
     if (39 in keyObject) {
-      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].X += __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].speed; __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].imgPositionY = 0;
+      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].X += __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].speed; 
+      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].imgPositionY = 0;
     }
     if (40 in keyObject) {
-      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].Y += __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].speed; __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].imgPositionY = 32;
+      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].Y += __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].speed; 
+      __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].imgPositionY = 32;
     }
     if (__WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].X >= (this.canvas.width-32)) {
       __WEBPACK_IMPORTED_MODULE_1__game_objects__["b" /* Pacman */].X = 0;
@@ -279,6 +288,9 @@ class Game {
   
   playGame() {
     this.render();
+    this.scoreText = 'PACMAN: ' + this.score + 
+    '  &nbsp; ' + '    GHOST: ' + this.gscore;
+    this.scoreElement.innerHTML = this.scoreText;
     if (!this.isPaused) {
       requestAnimationFrame(this.playGame);
     } else {
@@ -440,24 +452,24 @@ class Game {
   
   drawNotifications(){
     this.context.fillStyle = '#FFF';
-    this.context.font = '20px Verdana';
-      this.context.fillText('PACMAN: ' + 
-      this.score + ' GHOST: ' + this.gscore, 2,18 );
+    this.context.font = '20px Limelight';
       if (this.isPaused && !this.isStart) {
         this.context.fillText('PAUSED', 400,20 );
       }
       if (this.isStart && this.isPaused) {
-        this.context.fillText('PLEASE PRESS SPACE TO START', 130,200 );
+        this.pauseMessage.style.display = 'block';
+      } else {
+        this.pauseMessage.style.display = 'none';
       }
       if (this.score === 11) {
         this.context.fillStyle = 'red';
-        this.context.font = '40px Verdana';
-        this.context.fillText('YOU WON', 200,200 );
+        this.context.font = '40px Limelight';
+        this.context.fillText('YOU HAVE WON', 200,200 );
         this.isPaused = true;
         this.isGameOver = true;
       } else if (this.gscore === 11) {
         this.context.fillStyle = 'red';
-        this.context.font = '40px Verdana';
+        this.context.font = '40px Limelight';
         this.context.fillText('GAME OVER', 190,200 );
         this.isPaused = true;
         this.isGameOver = true;
