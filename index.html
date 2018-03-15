@@ -3,21 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title>Pacman ball game</title>
+    <link href="https://fonts.googleapis.com/css?family=Limelight" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./css/ionicons.min.css">
     <script src="./js/bundle.js"></script>
   </head>
   <body>
     <div class="row">
-      <div id='root' class='game'>
+      <div class='game'>
         <h1 id='title'>Pacman ball</h1>
+        <h3 id='score'>PACMAN: 0    &nbsp; GHOST:  0</h3>
+        <p id='pause-message'>PLEASE PRESS SPACE TO START</p>
         <i id='volume' onclick='volumeClick()' class="volume icon ion-android-volume-up"></i>
+        <div id='root'>
+        </div>
       </div>
       <div class='controls'>
         <i id='play' onclick='clickPlay()' class='play icon ion-ios-play-outline'></i>
         <i id='pause' onClick='clickPause()' class='pause icon ion-ios-pause-outline'></i>
         <i id='reset' onClick='resetGame()' class='reset icon ion-ios-refresh'></i>
       </div>
+      <div class="instructions">
+        <h1>Instructions:</h1>
+          <ul>
+          <li>Use your arrow keys to move Pacman around the field.</li>
+          <li>Moving pacman continuously to one of the walls will bring 
+          it to the opposite wall.</li>
+          <li>The game is complele when pacman or ghost gets 11 points.</li>
+        </ul>
+      </div>
+      <div class='my-links'>
+        <a href='https://www.linkedin.com/in/alspirid/'><img src='images/github-color.svg'></a>
+        <a href='https://github.com/Alspirid'><img src='images/linkedin-color.svg'/></a>
+    </div>
     </div>
   </body>
 </html>
