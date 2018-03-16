@@ -7,7 +7,7 @@ body {
 .game {
   width: 650px;
   height: 450px;
-  margin-top: 60px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   border: 5px solid navy;
@@ -48,7 +48,6 @@ body {
 canvas {
   border: 1px solid #000;
   border-radius: 5px;
-  /* border: 5px solid navy; */
 }
 
 .game h1 {
@@ -75,15 +74,13 @@ canvas {
 }
 
 .controls {
-  /* border: 1px solid blue; */
   border-radius: 5px;
-  padding: 15px;
+  /* padding: 15px; */
   width: 250px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   justify-content: space-around;
-  /* flex-direction: column; */
   align-items: center;
 }
 
@@ -105,7 +102,7 @@ canvas {
 
 .instructions {
   padding: 5px;
-  width: 600px;
+  width: 700px;
   margin: auto;
   color: #eee;
   font-family: 'Limelight', cursive;
@@ -132,7 +129,6 @@ canvas {
   display:flex;
   justify-content: center;
   padding: 10px;
-  margin-top: 15px;
 }
 
 .my-links img {
