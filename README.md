@@ -1,18 +1,20 @@
 # Packmanball
 
 ### Background and overview
-Packmanball is a game based on a well known arcade video game Pacman from 1980 originally created by Namco in Japan. The Packmanball represents a game board, the packman, several enemies aka "ghosts" and a ball randomly generated on the board.
+Pacmanball is a game based on a well known arcade video game Pacman from 1980 originally created by Namco in Japan. The Pacmanball represents a game board, the packman, several enemies aka "ghosts" and a ball randomly generated on the board.
 The goal of the game is to hit the ball by controlling the Packman. If the packman hits the ball it would temporarily be able to hit the enemies and get an additional point.
-The enemies will work the same way as in the original packman trying to catch the packman, sometimes they have a higher speed. In order to make the game playable and enjoyable the board wouldn't have an internal maze or boundaries. So if the packman moves out of the board for example on the right side it will re-appear on the left side of the board. The player will get score if he/she get a ball and computer(enemies) will get a score if the packman get hit by the enemies. The packmanball game is over when a player or enemies achieved a score of 11 points.
+The enemies will work the same way as in the original packman trying to catch the packman, sometimes they have a higher speed. In order to make the game playable and enjoyable the board wouldn't have an internal maze or boundaries. So if the packman moves out of the board for example on the right side it will re-appear on the left side of the board. The player will get score if he/she get a ball and computer(enemies) will get a score if the packman get hit by the enemies. The pacmanball game is over when a player or enemies achieved a score of 11 points.
 
 ![](https://github.com/Alspirid/JS-project-pacman/blob/master/images/pacman-ball-intro.gif)
  
 ### Functionality & MVP
 
- - [ ] User can control packman and move it inside the board
- - [ ] The "ghosts" will chase the packman inside the board trying to hit the packman
- - [ ] User will hear sounds on collision and packman movement
- - [ ] The game will have a start, pause, and reset options
+ - [ ] User can control pacman and move it inside the board.
+ - [ ] The "ghosts" will chase the pacman inside the board trying to hit the pacman until pacman eats the powerball.
+ - [ ] Once pacman eats the powerball it get the ability to move faster and eat the ghost. For every every eaten item (powerball or ghost)
+ pacman get a point, while ghost gets a point when it hits the pacman. At the same time ghost can move faster than pacman.
+ - [ ] The game is accompanied with collision sounds from the original pacman game.
+ - [ ] The game has a control board with three options: start, pause, and reset buttons.
 
 ### Wireframe
 The app will consist of a single screen with the canvas, playback controls, volume control, score and level.
