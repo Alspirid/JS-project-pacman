@@ -4,6 +4,8 @@
 Packmanball is a game based on a well known arcade video game Pacman from 1980 originally created by Namco in Japan. The Packmanball represents a game board, the packman, several enemies aka "ghosts" and a ball randomly generated on the board.
 The goal of the game is to hit the ball by controlling the Packman. If the packman hits the ball it would temporarily be able to hit the enemies and get an additional point.
 The enemies will work the same way as in the original packman trying to catch the packman, sometimes they have a higher speed. In order to make the game playable and enjoyable the board wouldn't have an internal maze or boundaries. So if the packman moves out of the board for example on the right side it will re-appear on the left side of the board. The player will get score if he/she get a ball and computer(enemies) will get a score if the packman get hit by the enemies. The packmanball game is over when a player or enemies achieved a score of 11 points.
+
+![](https://github.com/Alspirid/JS-project-pacman/blob/master/assets/pacman-ball-intro.gif)
  
 ### Functionality & MVP
 
