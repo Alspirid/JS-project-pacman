@@ -38,6 +38,45 @@ document.addEventListener('keydown', (e)=>{
 document.addEventListener('keyup', (e)=>{
   delete game.keyClick[e.keyCode];
 },false);
+
+move(keyObject){
+
+ if (37 in keyObject) {
+   Pacman.X -= Pacman.speed; 
+   Pacman.imgPositionY = 64;
+ }
+ if (38 in keyObject) {
+   Pacman.Y -= Pacman.speed; 
+   Pacman.imgPositionY = 96;
+ }
+ if (39 in keyObject) {
+   Pacman.X += Pacman.speed; 
+   Pacman.imgPositionY = 0;
+ }
+ if (40 in keyObject) {
+   Pacman.Y += Pacman.speed; 
+   Pacman.imgPositionY = 32;
+ }
+ if (Pacman.X >= (this.canvas.width-32)) {
+   Pacman.X = 0;
+ }
+ if (Pacman.Y >= (this.canvas.height-32)) {
+   Pacman.Y = 0;
+ }
+ if (Pacman.X < 0) {
+   Pacman.X = (this.canvas.width - 32);
+ }
+ if (Pacman.Y < 0) {
+   Pacman.Y = (this.canvas.height - 32);
+ }
+ 
+ if (Pacman.imgPositionX === 320)  {
+   Pacman.imgPositionX = 352;
+ } else {
+   Pacman.imgPositionX = 320;
+ }
+}
+
 ```
 
 
