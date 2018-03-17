@@ -7,14 +7,14 @@ The enemies will work the same way as in the original packman trying to catch th
 
 ![](https://github.com/Alspirid/JS-project-pacman/blob/master/images/pacman-ball-intro.gif)
  
-### Functionality & MVP
+### Game functionality
 
- - [ ] User can control pacman and move it inside the board.
- - [ ] The "ghosts" will chase the pacman inside the board trying to hit the pacman until pacman eats the powerball.
- - [ ] Once pacman eats the powerball it get the ability to move faster and eat the ghost. For every every eaten item (powerball or ghost)
+ * User can control pacman and move it inside the game board.
+* The "ghosts" will chase the pacman inside the board trying to hit the pacman until pacman eats the powerball.
+* Once pacman eats the powerball it get the ability to move faster and eat the ghost. For every every eaten item (powerball or ghost)
  pacman get a point, while ghost gets a point when it hits the pacman. At the same time ghost can move faster than pacman.
- - [ ] The game is accompanied with collision sounds from the original pacman game.
- - [ ] The game has a control board with three options: start, pause, and reset buttons.
+* The game is accompanied with collision sounds from the original pacman game.
+* The game has a control board with three options: start, pause, and reset buttons.
 
 ### Wireframe
 The app will consist of a single screen with the canvas, playback controls, volume control, score and level.
