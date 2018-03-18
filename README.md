@@ -10,7 +10,7 @@ The enemies will work the same way as in the original packman trying to catch th
 ## Features
 
 * User can control pacman, move it inside the game board and pause and restart the game. 
-* The "ghosts" will chase the pacman inside the board trying to hit the pacman until pacman eats the powerball.
+* Ghost will chase the pacman inside the board trying to hit the pacman until pacman eats the powerball.
 * Once pacman eats the powerball it get the ability to move faster and eat the ghost. 
 * Game score: for every eaten item (powerball or ghost) pacman gets a point, while ghost gets a point when it hits the pacman. 
 * The game is accompanied with collision sounds from the original pacman game.
@@ -77,6 +77,38 @@ move(keyObject){
  }
 }
 
+```
+### Ghost will chase pacman inside the board trying to hit pacman unless pacman eats the powerball.
+First of all ghost is randomly selected from the pull of available ghosts presented in the pacman picture and generated on the canvas.
+
+![](https://github.com/Alspirid/JS-project-pacman/blob/master/images/pac.png)
+
+```javascript
+export const Enemy = {
+  X: randomNumber(450),
+  Y: randomNumber(250) + 30,
+  speed: 5,
+  movingTime: 0,
+  dirX: 0,
+  dirY: 0,
+  flash: 0,
+  ghostEat: false,
+  ghostNum: randomNumber(5) * 64,
+};
+
+drawEnemy(){
+  this.context.drawImage(
+    this.mainImage,
+    Enemy.ghostNum,
+    Enemy.flash,
+    32,
+    32,
+    Enemy.X,
+    Enemy.Y,
+    32,
+    32
+  );
+}
 ```
 
 
