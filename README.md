@@ -1,16 +1,16 @@
-# Packmanball
+# Pacman-ball
 
 ## Background and overview
-Pacmanball is a game based on a well known arcade video game Pacman from 1980 originally created by Namco in Japan. The Pacmanball represents a game board, the packman, several enemies aka "ghosts" and a ball randomly generated on the board.
-The goal of the game is to hit the ball by controlling the Packman. If the packman hits the ball it would temporarily be able to hit the enemies and get an additional point.
-The enemies will work the same way as in the original packman trying to catch the packman, sometimes they have a higher speed. In order to make the game playable and enjoyable the board wouldn't have an internal maze or boundaries. So if the packman moves out of the board for example on the right side it will re-appear on the left side of the board. The player will get score if he/she get a ball and computer(enemies) will get a score if the packman get hit by the enemies. The pacmanball game is over when a player or enemies achieved a score of 11 points.
+Pacman-ball is a variation of the well known video game Pacman from 1980, originally created by Namco in Japan. The pacman-ball represents a game board, the pacman, one enemy aka "ghost" and a powerball randomly generated on the board.
+The goal of the game is to hit the powerball by controlling pacman. If the pacman hits the powerball it get a point and it would temporarily be able to hit the enemies and get an additional point.
+The enemy will work the same way as in the original pacman trying to catch the pacman, sometimes they have a higher speed. In order to make the game playable and enjoyable the board wouldn't have an internal maze or boundaries. So if the pacman moves out of the board boundaries, for example on the right side it will re-appear on the left side of the board. The pacman-ball game is over when a player or enemies achieved a score of 11 points.
 
 ![](https://github.com/Alspirid/JS-project-pacman/blob/master/images/pacman-ball-intro.gif)
  
 ## Features
 
 * User can control pacman, move it inside the game board and pause and restart the game. 
-* Ghost will chase the pacman inside the board trying to hit the pacman until pacman eats the powerball.
+* Ghost will chase pacman inside the board trying to hit the pacman until pacman eats the powerball.
 * Once pacman eats the powerball it get the ability to move faster and eat the ghost. 
 * Game score: for every eaten item (powerball or ghost) pacman gets a point, while ghost gets a point when it hits the pacman. 
 * The game is accompanied with collision sounds from the original pacman game.
@@ -78,7 +78,7 @@ move(keyObject){
 }
 
 ```
-### Ghost will chase pacman inside the board trying to hit pacman unless pacman eats the powerball.
+### Ghost is chasing pacman trying to hit it, unless pacman eats the powerball.
 First of all ghost is randomly selected from the pull of available ghosts presented in the pacman picture and generated on the canvas.
 
 ![](https://github.com/Alspirid/JS-project-pacman/blob/master/assets/pac.png)
@@ -110,14 +110,28 @@ drawEnemy(){
   );
 }
 ```
-Once ghost is drawn on the board render() function will call generateEnemyMovements() which
+Once ghost is drawn on the board, render() function will call generateEnemyMovements() which
 will control of all ghost movements. 
-Depending on few properties generateEnemyMovements will update X,Y coordinates of ghost:
- * Enemy.movingTime - some random period of time when ghost will move towards  to pacman
- * Powerball.ghostEat - reflects if pacman has eaten powerball and ghost should run away from pacman
+Depending on few properties generateEnemyMovements() will update X,Y coordinates of ghost:
+ * Enemy.movingTime - some random period of time when ghost will move towards pacman
+ * Powerball.ghostEat - true if pacman has eaten powerball, then ghost should move away from pacman
  
 
 ```javascript
+
+render() {
+  this.context.fillStyle = "black";
+  this.context.fillRect(0,0,this.canvas.width, this.canvas.height);
+  this.drawPacman();
+  this.drawEnemy();
+  this.setupPowerball();
+  this.generateEnemyMovements();
+  this.detectEnemyCollision();
+  this.detectPowerballCollision();
+  this.drawPowerball();
+  this.drawNotifications();
+}  
+
 generateEnemyMovements(){
   if(Enemy.movingTime < 0) {
     Enemy.movingTime = (randomNumber (20) * 3) + randomNumber(1);
@@ -162,70 +176,48 @@ generateEnemyMovements(){
 }
 ```
 
+### Collision detection
+Detecting when the objects collide is one of the most fundamentals of making this game. However, to apply collision detection on every object with different shape is difficult. In pacman-ball, all objects are circles, which makes the logic less complicated. 
+I use X,Y coordinates and circle radius to check if two circles are colliding.
+If distance between centers of two circle is less than the sum of their radius, then they are hitting each other.
+
+```javascript
+detectEnemyCollision() {
+  if (Pacman.X <= (Enemy.X + 26) && 
+      Enemy.X <= (Pacman.X + 26) && 
+      Pacman.Y <= (Enemy.Y + 26) && 
+      Enemy.Y <= (Pacman.Y + 32)
+    ) {
+        if (Powerball.ghostEat) {
+          this.score++;
+          playSound(this.isVolume,'eatghost');
+        } else {
+          this.gscore++;
+          playSound(this.isVolume,'death');
+        }
+        Pacman.X = randomNumber(100)+50;
+        Pacman.Y = randomNumber(200)+50;
+        Enemy.X = randomNumber(200)+30;
+        Enemy.Y = randomNumber(300)+30;
+        Powerball.pcountdown = 0;
+      }
+      if (Enemy.flash === 0){
+        Enemy.flash = 32;
+      } else {
+        Enemy.flash = 0;
+      }  
+}
+```
+
 ### Architecture and Technologies
-This project will be implemented with the following technologies:
+This project is implemented with the following technologies:
 - Vanilla JavaScript for overall structure and game logic
 - HTML5 Canvas for DOM manipulation and rendering,
-- Web Audio API for sound generation, processing and control. WebAudioAPI allows for simultaneous sounds with more dependable time triggering
+- Web Audio for sound generation, processing and control. 
 - Webpack to bundle and serve up the various scripts.
 
-In addition to the webpack entry file, there will be three scripts involved into this project:
-- board.js - this script will handle the logic for creating and updating different DOM elements
-- packman.js - will handle logic of moving elements over the canvas
-- audio.js - this script will handle the audio logic and the creation of AudioEvents based on the input parameters outlined above. The programming paradigm will be an audio graph consisting of buffers and processing nodes, all connected into a master bus, and referencing a global AudioContext with its own timeline.
 
-
-
-### Sounds and Artwork
-
-The Artworks and Sounds for the packmanball game is taken from the free resource: http://www.classicgaming.cc/classics/pac-man/sounds
-
-#### The following sounds will be used in the game:
-- packman_beginning.wav
-- packman_death.wav
-- packman_eatfruit.wav
-- packman_eatghost.wav
-- packman_intermission.wav
-- packman_chomp.wav
-
-### The main artwork will be used in the game:
-- pac.png
-
-### Implementation timeline
-- [x] Finish canvas and momentum collision on the packman project
-
-#### Day 1
-Setup all necessary Node modules, including getting webpack up and running. Create webpack.config.js as well as package.json. Write a basic entry file and the bare bones of all 4 scripts outlined above. Learn the basics of Web Audio API. Goals for the day:
-
--  Get webpack serving files and frame out index.html
--  Learn enough Web Audio to render an object to the Canvas element and create a sound
--  Port over the relevant pieces of my Packman (with collision physics) project
-
-
-#### Day 2
-Dedicate this day to learning the Web Audio API. First, build out the AudioEvent object to connect to the Board object. Then, use board.js to create and render the Packman and AudioEvents. Goals for the day:
-
-- Complete the packman.js module (constructor, update functions, colors)
--  Get sounds to play on collisions
--  Build first sound library
--  Get collision graphics working
-
-#### Day 3
-Create the logic for the game. Build out playback functionality: play, pause, restart. 
-Goals for the day:
-
-- Build playback controls
-- Handle playback events
-- Implement playback logic
-- Have a functional screen on the Canvas frontend that correctly handles creation and running of the game events.
-- Test and make sure that starting, stopping, and resetting works.
-
-#### Day 4
-Style game elements to look them polished and professional.
-- Create volume control to turn on/off the game sounds.
-- Have a styled canvas, nice looking controls and game title
-
-### Bonus features
-- Compute and show the game score depending on the game performance
-- Game levels with different level on complexity
+### Bonus features and future improvements
+- Add game levels with different complexity
 - Allow user to select level
+- Add multiple ghost depending on the game complexity
