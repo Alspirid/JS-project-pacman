@@ -81,7 +81,7 @@ move(keyObject){
 ### Ghost will chase pacman inside the board trying to hit pacman unless pacman eats the powerball.
 First of all ghost is randomly selected from the pull of available ghosts presented in the pacman picture and generated on the canvas.
 
-![](https://github.com/Alspirid/JS-project-pacman/blob/master/images/pac.png)
+![](https://github.com/Alspirid/JS-project-pacman/blob/master/assets/pac.png)
 
 ```javascript
 export const Enemy = {
