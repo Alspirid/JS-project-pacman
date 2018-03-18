@@ -110,8 +110,57 @@ drawEnemy(){
   );
 }
 ```
+Once ghost is drawn on the board render() function will call generateEnemyMovements() which
+will control of all ghost movements. 
+Depending on few properties generateEnemyMovements will update X,Y coordinates of ghost:
+ * Enemy.movingTime - some random period of time when ghost will move towards  to pacman
+ * Powerball.ghostEat - reflects if pacman has eaten powerball and ghost should run away from pacman
+ 
 
-
+```javascript
+generateEnemyMovements(){
+  if(Enemy.movingTime < 0) {
+    Enemy.movingTime = (randomNumber (20) * 3) + randomNumber(1);
+    Enemy.speed = randomNumber (3) + 1 ;
+    Enemy.dirX = 0;
+    Enemy.dirY = 0;
+    
+    if (Powerball.ghostEat) {
+      Enemy.speed = Enemy.speed * -1;
+    }
+    
+    if (Enemy.movingTime % 2) {
+      if (Pacman.X < Enemy.X) {
+        Enemy.dirX = -Enemy.speed;
+      } else {
+        Enemy.dirX = Enemy.speed;
+      }
+    } else {
+      if (Pacman.Y < Enemy.Y) {
+        Enemy.dirY = -Enemy.speed;
+      } else {
+        Enemy.dirY = Enemy.speed;
+      }
+    }
+  }
+  Enemy.movingTime--;
+  Enemy.X = Enemy.X + Enemy.dirX;
+  Enemy.Y = Enemy.Y + Enemy.dirY;
+  
+  if (Enemy.X >= (this.canvas.width-32)) {
+    Enemy.X = 0;
+  }
+  if (Enemy.Y >= (this.canvas.height-32)) {
+    Enemy.Y = 0;
+  }
+  if (Enemy.X < 0) {
+    Enemy.X = (this.canvas.width - 32);
+  }
+  if (Enemy.Y < 0) {
+    Enemy.Y = (this.canvas.height - 32);
+  }
+}
+```
 
 ### Architecture and Technologies
 This project will be implemented with the following technologies:
