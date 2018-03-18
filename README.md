@@ -17,7 +17,7 @@ The enemy will work the same way as in the original pacman trying to catch the p
 * The game has a control board with three options: start, pause, and reset buttons.
 
 
-### Controling pacman and moving it inside the game board
+### Controling pacman movements
 Users are able to control pacman by pressing arrow keys and moving pacman around the game board.
 Users can also pause and restart the game: hitting space key or clicking on play/pause button 
 will pause/continue the game, clicking on the restart button will restart the game.
@@ -78,7 +78,7 @@ move(keyObject){
 }
 
 ```
-### Ghost is chasing pacman trying to hit it, unless pacman eats the powerball.
+### Ghost movements depending on pacman position
 First of all ghost is randomly selected from the pull of available ghosts presented in the pacman picture and generated on the canvas.
 
 ![](https://github.com/Alspirid/JS-project-pacman/blob/master/assets/pac.png)
