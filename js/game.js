@@ -220,7 +220,6 @@ class Game {
           Pacman.Y = randomNumber(200)+50;
           Enemy.X = randomNumber(200)+30;
           Enemy.Y = randomNumber(300)+30;
-          // Powerball.ghostEat = false;
           Powerball.pcountdown = 0;
         }
         if (Enemy.flash === 0){
